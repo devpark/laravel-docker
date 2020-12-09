@@ -1,4 +1,4 @@
-# Docker Start Up
+# Laravel Start Up
 
 ### Prerequisites:
 
@@ -13,6 +13,9 @@ Working with docker environment requires installation below tools on workstation
 
 1. New project starts with framework cloning
 `git clone https://github.com/laravel/laravel.git`
+
+2. Go to project directory in project 
+`cd /path/to/laravel/project`
 
 2. Remove git history
 `rm -rf .git`
@@ -29,30 +32,17 @@ Working with docker environment requires installation below tools on workstation
 6. Push initial commit to remote repository
 `git push origin master`
 
-### Adding docker enviroment
+### Adding docker environment
 
 1. Download ZIP version of this repository.
 
 2. Extract ZIP and put docker directory to project.
 
-3. Move to docker directory in project
-`cd /path/to/project/docker`  
-
-4. Fill  environment variables in `.env.example`
+3. Fill  environment variables in `.env.example`
 
 ***Caution:\
-Filling environment variables .env.example should pairing with docker compose configuration***
-
-4.  Make you own environment 
-`cp .env.example .env`
-
-5.  Build docker environment
-`docker-compose build`
-
-5. Up and running docker environment
-`docker-composer up -d`
-
-6. Visit welcome page laravel.docker (127.17.0.1) 
+Filling environment variables .env.example should pairing with docker compose configuration\
+Use this repository sample .env.example***
 
 ## Working with existing project
 
@@ -82,3 +72,31 @@ Don't need to make any changes***
 `docker-composer up -d`
 
 
+## Startup Projects
+
+1.  Make you own environment 
+`cp .env.example .env`
+
+2. Move to docker directory in project
+`cd /path/to/project/docker`  
+
+3.  Build docker environment
+`docker-compose build`
+
+4. Up and running docker environment
+`docker-composer up -d`
+
+
+## Install Laravel
+
+
+1. Install depedenties
+ 
+`docker exec -it ${project-name}-backend composer install`
+*** ${project-name} is your project name, check by `docker ps`***
+
+2. Install depedenties
+ 
+`docker exec -it ${project-name}-backend php artisan key:generate`
+
+5. Visit welcome page laravel.docker (127.17.0.1) 

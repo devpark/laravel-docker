@@ -1,9 +1,9 @@
-version: "2"
+version: "3.4"
 
 services:
   web:
     image: nginx:latest
-    container_name: "project-name"
+    container_name: "${PROJECT_NAME}"
     ports:
       - "80:80"
     volumes:
@@ -11,14 +11,14 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./logs/nginx:/var/log/nginx
     links:
-      - php
       - redis
       - database
+      - php
 
   php:
     build: .
-    image: "project-name/php"
-    container_name: "project-name-backend"
+    image: "${PROJECT_NAME}/php"
+    container_name: "${PROJECT_NAME}-backend"
     volumes:
       - ../:/var/www
       - ./logs/php/profiler:/profiler
@@ -31,22 +31,20 @@ services:
     ports:
       - "3006:3306"
     volumes:
-      - project-name-db-volume:/var/lib/mysql
+      - db-volume:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_USER=user
       - MYSQL_PASSWORD=secret
-      - MYSQL_DATABASE=project-name
-    container_name: "project-name-database"
+      - MYSQL_DATABASE=${PROJECT_NAME}
+    container_name: "${PROJECT_NAME}-database"
 
   redis:
     image: "redis:alpine"
-    container_name: "project-name-redis"
+    container_name: "${PROJECT_NAME}-redis"
     ports:
       - "6079:6379"
 
 volumes:
-  project-name-db-volume:
-
-
-
+  db-volume:
+    name: ${PROJECT_NAME}-db-volume
