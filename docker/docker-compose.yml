@@ -1,0 +1,52 @@
+version: "2"
+
+services:
+  web:
+    image: nginx:latest
+    container_name: "project-name"
+    ports:
+      - "80:80"
+    volumes:
+      - ../:/var/www
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./logs/nginx:/var/log/nginx
+    links:
+      - php
+      - redis
+      - database
+
+  php:
+    build: .
+    image: "project-name/php"
+    container_name: "project-name-backend"
+    volumes:
+      - ../:/var/www
+      - ./logs/php/profiler:/profiler
+    links:
+      - redis
+      - database
+
+  database:
+    image: mysql:8.0.22
+    ports:
+      - "3006:3306"
+    volumes:
+      - project-name-db-volume:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=secret
+      - MYSQL_DATABASE=project-name
+    container_name: "project-name-database"
+
+  redis:
+    image: "redis:alpine"
+    container_name: "project-name-redis"
+    ports:
+      - "6079:6379"
+
+volumes:
+  project-name-db-volume:
+
+
+
