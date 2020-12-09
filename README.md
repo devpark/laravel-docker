@@ -38,7 +38,15 @@ Working with docker environment requires installation below tools on workstation
 3. Move to docker directory in project
 `cd /path/to/project/docker`  
 
-4.  Build docker environment
+4. Fill  environment variables in `.env.example`
+
+***Caution:\
+Filling environment variables .env.example should pairing with docker compose configuration***
+
+4.  Make you own environment 
+`cp .env.example .env`
+
+5.  Build docker environment
 `docker-compose build`
 
 5. Up and running docker environment
@@ -57,13 +65,20 @@ Working with docker environment requires installation below tools on workstation
 3. Switch to develop branch if existing
 `git checkout develop` 
 
-4. Move to docker directory in project
+4.  Make you own environment 
+`cp .env.example .env`
+
+***Caution:\
+Sample environment variables .env.example should pairing with docker compose configuration\
+Don't need to make any changes***  
+
+5. Move to docker directory in project
 `cd /path/to/project/docker`  
 
-5.  Build docker environment
+6.  Build docker environment
 `docker-compose build`
 
-6. Up and running docker environment
+7. Up and running docker environment
 `docker-composer up -d`
 
 
