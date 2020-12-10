@@ -27,7 +27,7 @@ Working with docker environment requires installation below tools on workstation
 `git add . && git commit -m 'init'` 
 
 5. Add remote repository.
-`git remote add https://remote.repository.git`
+`git remote add origin https://remote.repository.git`
 
 6. Push initial commit to remote repository
 `git push origin master`
@@ -69,7 +69,7 @@ Don't need to make any changes***
 `docker-compose build`
 
 7. Up and running docker environment
-`docker-composer up -d`
+`docker-compose up -d`
 
 
 ## Startup Projects
@@ -84,7 +84,7 @@ Don't need to make any changes***
 `docker-compose build`
 
 4. Up and running docker environment
-`docker-composer up -d`
+`docker-compose up -d`
 
 
 ## Install Laravel

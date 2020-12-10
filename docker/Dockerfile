@@ -15,6 +15,8 @@ ENV PHP_XDEBUG_PROFILER_ENABLE ${PHP_XDEBUG_PROFILER_ENABLE:-0}
 ENV PHP_XDEBUG_PROFILER_OUTPUT_DIR ${PHP_XDEBUG_PROFILER_OUTPUT_DIR:-"/profiler"}
 ENV PHP_MEMORY_LIMIT ${PHP_MEMORY_LIMIT:-"2G"}
 
+USER root
+
 RUN set -ex \
   	&& apk update \
     && apk add --no-cache git mysql-client curl openssh-client icu libpng libjpeg-turbo postgresql-dev libffi-dev libzip-dev \
