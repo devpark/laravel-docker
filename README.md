@@ -90,7 +90,7 @@ Don't need to make any changes***
 ## Install Laravel
 
 
-1. Install depedenties
+1. Install dependencies
  
 `docker exec -it ${project-name}-backend composer install`
 
