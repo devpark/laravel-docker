@@ -96,7 +96,7 @@ Don't need to make any changes***
 
 ***${project-name} is your project name, check by docker ps***
 
-2. Install depedenties
+2. Generate api key
  
 `docker exec -it ${project-name}-backend php artisan key:generate`
 
