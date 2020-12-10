@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM php:8.0-fpm-alpine
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -21,8 +21,8 @@ RUN set -ex \
     && apk add --no-cache imagemagick-dev imagemagick \
     && apk add --no-cache --virtual build-dependencies icu-dev libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf \
     && docker-php-source extract \
-    && pecl install xdebug redis imagick \
-    && docker-php-ext-enable xdebug redis imagick \
+    && pecl install xdebug redis \
+    && docker-php-ext-enable xdebug redis \
     && docker-php-source delete \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
