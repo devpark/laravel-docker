@@ -93,7 +93,8 @@ Don't need to make any changes***
 1. Install depedenties
  
 `docker exec -it ${project-name}-backend composer install`
-*** ${project-name} is your project name, check by `docker ps`***
+
+***${project-name} is your project name, check by docker ps***
 
 2. Install depedenties
  
